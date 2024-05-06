@@ -1,0 +1,16 @@
+{
+  "name": "diswork",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/tailwind/style.css -o ./static/styles/style.css --watch",
+    "build": "tailwindcss -i ./src/tailwind/style.css -o ./static/styles/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}
