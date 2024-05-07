@@ -5,6 +5,9 @@ from .models import Member
 
 
 class SignUpForm(UserCreationForm):
+    name = forms.CharField(
+        label="姓名", widget=forms.TextInput(attrs={"class": "form-input"})
+    )
     username = forms.CharField(
         label="帳號", widget=forms.TextInput(attrs={"class": "form-input"})
     )

@@ -38,7 +38,7 @@
                 <div class="mb-3 font-bold text-center text-blueGray-400">
                     <small>Or sign in with credentials</small>
                 </div>
-                <form action="{% url 'login' %}" method="post">
+                <form action="{% url 'members:login' %}" method="post">
                     {% csrf_token %}
                     <div class="relative w-full mb-3">
                         <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600"
