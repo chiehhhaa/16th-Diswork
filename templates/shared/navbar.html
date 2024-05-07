@@ -1,11 +1,12 @@
 <nav class="flex flex-col w-full px-6 py-4 font-sans text-center bg-white shadow sm:flex-row sm:text-left sm:justify-between sm:items-baseline">
     <div class="flex items-center justify-between w-full">
         <div class="mb-2 sm:mb-0">
-            <a href="{% url "index" %}" class="text-2xl no-underline text-grey-darkest hover:text-blue-dark">Home</a>
+            <a href="{% url "index" %}" class="text-2xl no-underline text-grey-darkest hover:text-blue-dark">Diswork</a>
         </div>
         <div class="flex items-center">
             <!-- 登入/註冊連結 -->
             {% if user.is_authenticated %}
+                <a href="{% url 'members:edit' %}" class="ml-2 text-lg no-underline text-grey-darkest hover:text-blue-dark">編輯</a>
                 <a href="{% url 'members:logout' %}" class="ml-2 text-lg no-underline text-grey-darkest hover:text-blue-dark">登出</a>
             {% else %}
                 <a href="{% url 'members:login' %}" class="ml-2 text-lg no-underline text-grey-darkest hover:text-blue-dark">登入</a>

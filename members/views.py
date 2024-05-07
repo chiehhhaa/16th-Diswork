@@ -2,9 +2,11 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignUpForm
 from django.contrib.auth import login, logout
 from django.contrib import messages
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, UpdateView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from .models import Member
+from .forms import MemberUpdateForm
 
 
 # 登入
@@ -38,3 +40,16 @@ class RegisterView(FormView):
         form.save()
         messages.success(self.request, "註冊成功！")
         return super().form_valid(form)
+
+
+class MemberUpdateView(UpdateView):
+    model = Member
+    form_class = MemberUpdateForm
+    template_name = "registration/edit.html"
+    context_object_name = "user"
+
+    def get_success_url(self):
+        return reverse_lazy("index")
+
+    def get_object(self, queryset=None):
+        return self.request.user
