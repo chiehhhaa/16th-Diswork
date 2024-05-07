@@ -22,6 +22,5 @@ from .views import IndexView
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
     path("members/", include("members.urls")),
-    path("calendar/", include("events.urls")),
     path("admin/", admin.site.urls),
 ]

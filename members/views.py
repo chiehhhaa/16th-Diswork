@@ -1,13 +1,13 @@
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignUpForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout
 from django.contrib import messages
 from django.views.generic import TemplateView, FormView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
-from django.contrib.auth.models import User
 
 
+# 登入
 class LoginView(FormView):
     template_name = "registration/login.html"
     form_class = AuthenticationForm
@@ -18,6 +18,7 @@ class LoginView(FormView):
         return super().form_valid(form)
 
 
+# 登出
 class LogoutView(TemplateView):
     template_name = "registration/logout.html"
 
@@ -27,6 +28,7 @@ class LogoutView(TemplateView):
         return redirect("index")
 
 
+# 註冊
 class RegisterView(FormView):
     template_name = "registration/register.html"
     form_class = SignUpForm
@@ -34,10 +36,5 @@ class RegisterView(FormView):
 
     def form_valid(self, form):
         form.save()
-        user = authenticate(
-            username=form.cleaned_data["username"],
-            password=form.cleaned_data["password1"],
-        )
-        login(self.request, user)
         messages.success(self.request, "註冊成功！")
         return super().form_valid(form)
