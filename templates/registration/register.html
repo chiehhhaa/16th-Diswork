@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+<div>
+    <h1>註冊</h1>
+</div>
+<div class="flex justify-center mt-5">
+    <div class="w-3/4 md:w-1/2 sm:w-1/2">
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div>{{ form }}</div>
+            <input class="btn btn-success" type="submit" value="註冊" />
+        </form>
+    </div>
+</div>
+
+{% endblock %}
