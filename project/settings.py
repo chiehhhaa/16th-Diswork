@@ -107,11 +107,11 @@ AUTH_USER_MODEL = "members.Member"
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Taipei"
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 LOGIN_REDIRECT_URL = "home"
 
