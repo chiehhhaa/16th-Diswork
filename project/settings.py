@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "members",
+    "news_app",
 ]
 
 MIDDLEWARE = [
@@ -120,6 +121,9 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),  # 確保這個路徑指向的目錄存在
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
