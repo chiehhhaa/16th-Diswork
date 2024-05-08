@@ -2,8 +2,13 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, redirect, 
 from .models import Task
 from random import randint, choice
 from django.views.decorators.http import require_POST
+from datetime import datetime
+from django.utils import timezone
 
-# Create your views here.
+def to_aware_datetime(time):
+    naive_datetime = datetime.strptime(time, "%Y-%m-%dT%H:%M")
+    aware_datetime = timezone.make_aware(naive_datetime, timezone.get_current_timezone())
+    return aware_datetime
 
 def index(req):
     tasks = get_list_or_404(Task)
@@ -16,16 +21,14 @@ def new(req):
 @require_POST
 def create(req):
     name_list = ['joe', 'john', 'may', 'mary']
-    # print(req.POST['get_time'])
-    # print(req.POST['start_time'])
-    # print(req.POST['end_time'])
+
     task = Task(
         created_user=choice(name_list),
         title=req.POST['title'],
         content=req.POST['content'],
-        get_time=req.POST['get_time'],
-        start_time=req.POST['start_time'],
-        end_time=req.POST['end_time'],
+        get_time=to_aware_datetime(req.POST['get_time']),
+        start_time=to_aware_datetime(req.POST['start_time']),
+        end_time=to_aware_datetime(req.POST['end_time']),
     )
     task.save()
 
@@ -33,13 +36,13 @@ def create(req):
 
 def show(req, pk):
     task = get_object_or_404(Task, pk=pk)
-
     if req.method == 'POST':
+
         task.title=req.POST['title']
         task.content=req.POST['content']
-        task.get_time=req.POST['get_time']
-        task.start_time=req.POST['start_time']
-        task.end_time=req.POST['end_time']
+        task.get_time=to_aware_datetime(req.POST['get_time'])
+        task.start_time=to_aware_datetime(req.POST['start_time'])
+        task.end_time=to_aware_datetime(req.POST['end_time'])
         task.save()
 
         return redirect('tasks:show', pk=task.id)
@@ -48,7 +51,7 @@ def show(req, pk):
 
 def edit(req, pk):
     task = get_object_or_404(Task, pk=pk)
-   
+    
     return render(req, 'tasks/edit.html', {'task':task})
 
 
@@ -56,6 +59,6 @@ def edit(req, pk):
 def delete(req, pk):
     task = get_object_or_404(Task, pk=pk)
     task.delete()
-   
+    
     return HttpResponse('')
 
