@@ -15,7 +15,7 @@ def chat_view(request):
     if request.method == "POST":
         form = ChatmessageCreateForm(request.POST)
         if form.is_valid():
-            message = form.save(commit=False)
+            message = form.save(commit = False)
             message.author = request.user
             message.group = chat_group
             message.save()

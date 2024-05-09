@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterModelOptions(
-            name='groupmessage',
-            options={'ordering': ['-created_at']},
+            name = 'groupmessage',
+            options = {'ordering': ['-created_at']},
         ),
     ]
