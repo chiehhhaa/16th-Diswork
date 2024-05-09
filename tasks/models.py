@@ -28,7 +28,7 @@ class TakeTask(models.Model):
     pass
 
 class Situation(models.Model):
-    col_name=models.CharField(max_length=20, default='')
-    created_at=models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
+    col_name = models.CharField(max_length=20, default='')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
