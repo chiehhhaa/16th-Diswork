@@ -52,7 +52,7 @@ $ make server
   - GitHub: dali1756
   - Email: dali1756@gmail.com
 3. 巫爾均 LeoWu
-  - GitHub: Bunny1780
+  - GitHub: [Bunny1780](https://github.com/Bunny1780)
   - Email: defyto13579@gmail.com
 4. 陳志誠 StephenChen
   - GitHub: chenstephen0501
