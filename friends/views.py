@@ -1,21 +1,19 @@
-from django.views.generic import ListView, DeleteView
-from django.http import JsonResponse
-from django.http import HttpResponse
 from .models import Friend, Card
 from members.models import Member
 from boards.models import Category
 from django.db.models import Q
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, get_object_or_404, render
+from django.db.models.functions import TruncDate
+from django.views import View
+from django.views.generic import ListView, DeleteView
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy, reverse
+from django.http import JsonResponse
+from django.utils import timezone
+from django.utils.decorators import method_decorator
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from lib.paginate_que import paginate_queryset
 import random
-from django.utils import timezone
-from django.db.models.functions import TruncDate
-from django.template.loader import render_to_string
-from django.views import View
 
 
 @method_decorator(login_required, name="dispatch")

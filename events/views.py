@@ -1,13 +1,12 @@
+from .models import Event
+from boards.models import Category
+from .forms import EventForm
+from django.views.generic import FormView, ListView, UpdateView, DeleteView, CreateView
 from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.views.generic import FormView
-from .forms import EventForm
-from .models import Event
-from django.http import JsonResponse
-from django.views.generic import FormView, ListView, UpdateView, DeleteView, CreateView
-from boards.models import Category
 from datetime import timedelta
 
 

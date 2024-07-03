@@ -1,23 +1,19 @@
-from django.contrib.auth.forms import AuthenticationForm
-from .forms import SignUpForm
-from django.contrib.auth import login, logout
-from django.contrib import messages
-from django.views.generic import TemplateView, FormView, UpdateView, DetailView
-from django.urls import reverse_lazy, reverse
-from django.shortcuts import redirect, render
+from .forms import SignUpForm, MemberUpdateForm
 from .models import Member
 from boards.models import Category
-from .forms import MemberUpdateForm
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from django.http import Http404, HttpResponseForbidden
-from django.core.exceptions import PermissionDenied
-from django.utils.decorators import method_decorator
-from django.core.mail import send_mail
+from django.urls import reverse_lazy, reverse
+from django.shortcuts import redirect, render
+from django.views.generic import TemplateView, FormView, UpdateView, DetailView
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
+from django.utils.decorators import method_decorator
+from django.contrib import messages
+from django.contrib.auth import login, logout, get_backends
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.tokens import default_token_generator
-from django.contrib.auth import get_backends
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.core.exceptions import PermissionDenied
 from dotenv import load_dotenv
 import os
 

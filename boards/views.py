@@ -1,15 +1,12 @@
-from django.db.models.query import QuerySet
-from django.shortcuts import redirect, get_object_or_404, render
 from .models import Category
+from members.models import Member
 from .forms import CategoryForm
 from django.views.generic import ListView, FormView, DetailView, UpdateView, DeleteView
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.urls import reverse_lazy
-from members.models import Member
-from django.http import Http404
-from django.contrib.auth.decorators import permission_required
+from django.shortcuts import redirect, render
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 
 
