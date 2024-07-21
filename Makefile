@@ -1,6 +1,8 @@
 server:
 	poetry run python manage.py runserver
-makemig:
+migrations:
 	poetry run python manage.py makemigrations
-mig:
+migrate:
 	poetry run python manage.py migrate
+test:
+	poetry run python manage.py test
